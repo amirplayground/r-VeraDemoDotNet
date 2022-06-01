@@ -43,6 +43,7 @@ jobs:
         dotnet-version: 6.*.*
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: ./
     - name: Build
       run: dotnet build --no-restore #configuration Release
       working-directory: ./
