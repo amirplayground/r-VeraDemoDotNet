@@ -37,16 +37,28 @@ jobs:
 
 #===============================================================================
     # Build the application
-    - name: Setup dotNET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.*.*
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: ./
-    - name: Build
-      run: dotnet build --no-restore #configuration Release
-      working-directory: ./
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+    
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+    
+    - name: Restore NuGet packages
+      run: nuget restore Verademo-dotnet.sln
+    
+    - name: Build the Solution
+      run: msbuild Verademo-dotnet.sln /p:Configuration=Release
+    
+    #- name: Setup dotNET
+      #uses: actions/setup-dotnet@v2
+      #with:
+        #dotnet-version: 6.*.*
+    #- name: Restore dependencies
+      #run: dotnet restore
+      #working-directory: ./
+    #- name: Build
+      #run: dotnet build --no-restore #configuration Release
+      #working-directory: ./
     #- name: Test
       #run: dotnet test #--no-build --verbosity normal
       #working-directory: ./
