@@ -66,7 +66,7 @@ jobs:
 #===============================================================================
     # OPTIONAL: If build output is more than a one file
     # Zipping all the code together into single file 
-    - run: zip -r veracode-scan-target.zip ./
+    - run: zip -r veracode-scan-target.zip .\
 #===============================================================================
 
     # download the Veracode Static Analysis Pipeline scan jar
