@@ -57,13 +57,13 @@ jobs:
       run: msbuild Verademo-dotnet.sln /p:Configuration=Release
 #===============================================================================
     
-    #- name: Setup dotNET
-      #uses: actions/setup-dotnet@v2
-      #with:
-        #dotnet-version: 6.*.*
-    #- name: Restore dependencies
-      #run: dotnet restore
-      #working-directory: ./
+    - name: Setup dotNET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.*.*
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./
     #- name: Build
       #run: dotnet build --no-restore #configuration Release
       #working-directory: ./
